@@ -93,3 +93,23 @@ src/
 ### 7. Package Management
 *   **Tool:** Use **Yarn** exclusively. Do not use `npm`.
 *   **Lockfile:** Always commit `yarn.lock`.
+
+### 8. API & Error Handling
+*   **Try/Catch Blocks:** All API calls within store actions MUST be wrapped in a `try/catch` block.
+*   **Global Error Handling:** Use `useErrorStore.getState().showError()` to display user-friendly error messages for API failures.
+    ```typescript
+    // Example Action
+    fetchData: async () => {
+      set({ isLoading: true });
+      try {
+        const data = await api.get('/data');
+        set({ data });
+      } catch (error) {
+        console.error(error);
+        useErrorStore.getState().showError('Failed to fetch data.');
+        set({ error: 'Failed to fetch data' });
+      } finally {
+        set({ isLoading: false });
+      }
+    }
+    ```
