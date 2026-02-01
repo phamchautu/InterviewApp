@@ -1,3 +1,14 @@
+export interface UserProfile {
+  id: number;
+  name: string;
+  username: string;
+  avatar: {
+    tmdb: {
+      avatar_path: string | null;
+    };
+  };
+}
+
 export interface Genre {
   id: number;
   name: string;

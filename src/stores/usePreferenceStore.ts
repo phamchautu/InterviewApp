@@ -8,11 +8,13 @@ export type SortOption = 'alphabetical' | 'rating' | 'release_date';
 interface PreferenceState {
   selectedCategory: MovieCategory;
   sortBy: SortOption | null;
+  _hasHydrated: boolean; // Added to track hydration
 }
 
 interface PreferenceActions {
   setSelectedCategory: (category: MovieCategory) => void;
   setSortBy: (sortBy: SortOption | null) => void;
+  setHasHydrated: (state: boolean) => void;
 }
 
 export const usePreferenceStore = create<PreferenceState & PreferenceActions>()(
@@ -20,13 +22,18 @@ export const usePreferenceStore = create<PreferenceState & PreferenceActions>()(
     (set) => ({
       selectedCategory: 'now_playing', // Default category
       sortBy: null, // Default to no sorting
+      _hasHydrated: false,
 
       setSelectedCategory: (category) => set({ selectedCategory: category }),
       setSortBy: (sortBy) => set({ sortBy: sortBy }),
+      setHasHydrated: (state) => set({ _hasHydrated: state }),
     }),
     {
       name: 'preference-storage',
       storage: createJSONStorage(() => AsyncStorage),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
+      },
     }
   )
 );

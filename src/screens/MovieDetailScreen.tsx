@@ -34,7 +34,7 @@ const MovieDetailScreen: React.FC<Props> = ({ route, navigation }) => {
       const year = movie.release_date?.split('-')[0] || '';
       navigation.setOptions({
         headerTitle: `${movie.title} (${year})`,
-        headerStyle: { backgroundColor: HERO_BLUE },
+        headerStyle: { backgroundColor: '#38a4fc' },
         headerTintColor: '#FFFFFF',
       });
     }
@@ -199,13 +199,13 @@ const styles = StyleSheet.create({
   },
   heroSection: {
     backgroundColor: HERO_BLUE,
-    paddingHorizontal: 20,
     paddingBottom: 20,
     paddingTop: 0, // Removed top padding
   },
   heroTopRow: {
     flexDirection: 'row',
-    marginBottom: 20,
+    backgroundColor:'#38a4fc',
+    padding:20
   },
   mainPoster: {
     width: 100,
@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 20,
+    padding:20
   },
   scoreBlock: {
     flex:1
@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
     opacity: 0.8,
   },
   heroInfoBlock: {
-    marginBottom: 20,
+    padding: 20,
   },
   tagline: {
     color: 'rgba(255,255,255,0.8)',
@@ -302,6 +302,7 @@ const styles = StyleSheet.create({
     borderRadius: 4, // Updated from 24 to 4
     paddingVertical: 12,
     marginTop: 10,
+    marginHorizontal:20
   },
   watchlistButtonActive: {
     backgroundColor: 'rgba(255, 255, 255, 0.2)',

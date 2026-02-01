@@ -45,11 +45,14 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
   const setSelectedCategory = usePreferenceStore((state) => state.setSelectedCategory);
   const sortBy = usePreferenceStore((state) => state.sortBy);
   const setSortBy = usePreferenceStore((state) => state.setSortBy);
+  const hasHydrated = usePreferenceStore((state) => state._hasHydrated);
 
-  // Initial fetch on mount
+  // Initial fetch on mount once store is hydrated
   useEffect(() => {
-    handleSearchPress();
-  }, []); 
+    if (hasHydrated) {
+      handleSearchPress();
+    }
+  }, [hasHydrated]); 
 
   const handleCategorySelect = (value: string) => {
     setSelectedCategory(value as MovieCategory);
