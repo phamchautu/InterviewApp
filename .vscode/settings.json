@@ -1,0 +1,10 @@
+{
+  "files.exclude": {
+    "**/.git": false
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit",
+    "source.sortMembers": "explicit"
+  }
+}
