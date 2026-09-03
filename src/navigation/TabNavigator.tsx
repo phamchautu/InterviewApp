@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import HomeScreen from '@/screens/HomeScreen';
 import WatchlistScreen from '@/screens/WatchlistScreen';
+import ProfileScreen from '@/screens/ProfileScreen';
 import { TabParamList } from './types';
 
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -30,6 +31,8 @@ const TabNavigator = () => {
             iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'WatchlistTab') {
             iconName = focused ? 'bookmark' : 'bookmark-outline';
+          } else if (route.name === 'ProfileTab') {
+            iconName = focused ? 'person' : 'person-outline';
           }
 
           return <TabIcon name={iconName} color={color} focused={focused} />;
@@ -48,6 +51,13 @@ const TabNavigator = () => {
         component={WatchlistScreen} 
         options={{ 
           title: 'Watchlist',
+        }} 
+      />
+      <Tab.Screen 
+        name="ProfileTab" 
+        component={ProfileScreen} 
+        options={{ 
+          title: 'Profile',
         }} 
       />
     </Tab.Navigator>

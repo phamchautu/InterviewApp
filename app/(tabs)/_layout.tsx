@@ -21,6 +21,8 @@ export default function TabLayout() {
             iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'watchlist') {
             iconName = focused ? 'bookmark' : 'bookmark-outline';
+          } else if (route.name === 'profile') {
+            iconName = focused ? 'person' : 'person-outline';
           }
 
           return <Ionicons name={iconName} size={24} color={color} />;
@@ -37,6 +39,12 @@ export default function TabLayout() {
         name="watchlist"
         options={{
           title: 'Watchlist',
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
         }}
       />
     </Tabs>
